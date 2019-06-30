@@ -1,7 +1,6 @@
 ﻿using System;
-using SafeNotes.Models;
 
-namespace SafeNotes.DataModels
+namespace SafeNotes.Models
 {
     public class Note : BaseEntity
     {

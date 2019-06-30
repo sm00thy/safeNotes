@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SafeNotes.DataModels;
 using SafeNotes.Models;
 using SQLite;
 

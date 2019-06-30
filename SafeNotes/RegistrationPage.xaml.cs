@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SafeNotes.DataModels;
+using SafeNotes.Models;
 using Xamarin.Forms;
 
 namespace SafeNotes

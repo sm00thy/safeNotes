@@ -1,5 +1,5 @@
 ﻿using System;
-using SafeNotes.DataModels;
+using SafeNotes.Models;
 using Xamarin.Forms;
 
 namespace SafeNotes

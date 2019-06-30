@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using SafeNotes.Models;
-using SQLite;
 
-namespace SafeNotes.DataModels
+namespace SafeNotes.Models
 {
     public class User : BaseEntity
     {
         public string Login { get; set; }
         public string Password { get; set; }
-        public List<Note> Notes { get; set; }
 
         public User()
         { }
