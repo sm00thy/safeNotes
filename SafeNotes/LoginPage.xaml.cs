@@ -22,6 +22,12 @@ namespace SafeNotes
             var login = loginEntry?.Text;
             var password = passwordEntry?.Text;
             var user = await App.Database.GetByLogin(login);
+
+            if (user.Equals(null))
+            {
+                await DisplayAlert("Error", "Wrong credentials", "Ok");
+            }
+
             bool checkIfEmpty, checkLogin;
             Validation(login, password, user,
                 out checkIfEmpty, out checkLogin);
