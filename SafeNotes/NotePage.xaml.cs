@@ -6,14 +6,17 @@ namespace SafeNotes
     public partial class NotePage : ContentPage
     {
         private Note _note { get; set; }
+
         public NotePage()
         {
             InitializeComponent();
+            updateBtn.IsVisible = false;
         }
 
         public NotePage(Note note)
         {
             InitializeComponent();
+            updateBtn.IsVisible = true;
             _note = note;
             Title.Text = _note.Title;
             Description.Text = _note.Content;
