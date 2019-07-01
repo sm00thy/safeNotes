@@ -14,8 +14,8 @@ namespace SafeNotes
         public NotePage(Note note)
         {
             _note = note;
-            Title.Text = _note.Title;
-            Description.Text = _note.Content;
+            //Title.Text = note.Title;
+            //Description.Text = note.Content;
         }
 
         private async void Add_Btn_Clicked(object sender, System.EventArgs e)

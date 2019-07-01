@@ -3,7 +3,7 @@ using SQLite;
 
 namespace SafeNotes.Models
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         [PrimaryKey]
         public Guid Id { get; set; }
