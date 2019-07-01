@@ -9,8 +9,6 @@ namespace SafeNotes
         public NotePage()
         {
             InitializeComponent();
-            //Title.Text = _note.Title;
-            //Description.Text = _note.Content;
         }
 
         public NotePage(Note note)
@@ -24,14 +22,16 @@ namespace SafeNotes
         private async void Add_Btn_Clicked(object sender, System.EventArgs e)
         {
             var note = new Note(Title.Text, Description.Text);
-            await App.Database.SaveItem(note);
             await DisplayAlert("Saved!", "Your note has been saved!", "Ok");
+            await App.Database.SaveItem(note);
+            await Navigation.PopAsync();
         }
 
         private async void Update_Btn_Clicked(object sender, System.EventArgs e)
         {
             _note.Title = Title.Text;
             _note.Content = Description.Text;
+            await DisplayAlert("Updated!", "Your note has been updated!", "Ok");
             await App.Database.SaveItem(_note);
             await Navigation.PopAsync();
         }

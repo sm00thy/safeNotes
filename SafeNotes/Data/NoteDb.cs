@@ -34,7 +34,7 @@ namespace NotesManagerLib.DataModels
 
         public async Task<int> SaveItem<T>(T item) where T : BaseEntity
         {
-            await Task.Delay(5000);
+            await Task.Delay(2000);
             var result = await db.UpdateAsync(item);
 
             if (result == 0)
