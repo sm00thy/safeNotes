@@ -9,13 +9,16 @@ namespace SafeNotes
         public NotePage()
         {
             InitializeComponent();
+            //Title.Text = _note.Title;
+            //Description.Text = _note.Content;
         }
 
         public NotePage(Note note)
         {
+            InitializeComponent();
             _note = note;
-            //Title.Text = note.Title;
-            //Description.Text = note.Content;
+            Title.Text = _note.Title;
+            Description.Text = _note.Content;
         }
 
         private async void Add_Btn_Clicked(object sender, System.EventArgs e)
