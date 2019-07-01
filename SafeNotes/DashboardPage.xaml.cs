@@ -16,7 +16,8 @@ namespace SafeNotes
 
         protected async override void OnAppearing()
         {
-            var source = await App.Database.GetNotes();
+            var userId = (Guid)Application.Current.Properties["id"];
+            var source = await App.Database.GetNotes(userId);
             Notes = new ObservableCollection<Note>(source);
             NotesList.ItemsSource = Notes;
             base.OnAppearing();

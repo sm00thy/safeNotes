@@ -28,6 +28,8 @@ namespace SafeNotes
                 await DisplayAlert("Error", "Wrong credentials", "Ok");
             }
 
+            Application.Current.Properties["id"] = user.Id;
+
             bool checkIfEmpty, checkLogin;
             Validation(login, password, user,
                 out checkIfEmpty, out checkLogin);

@@ -1,4 +1,5 @@
-﻿using SafeNotes.Models;
+﻿using System;
+using SafeNotes.Models;
 using Xamarin.Forms;
 
 namespace SafeNotes
@@ -11,12 +12,14 @@ namespace SafeNotes
         {
             InitializeComponent();
             updateBtn.IsVisible = false;
+            saveBtn.IsVisible = true;
         }
 
         public NotePage(Note note)
         {
             InitializeComponent();
             updateBtn.IsVisible = true;
+            saveBtn.IsVisible = false;
             _note = note;
             Title.Text = _note.Title;
             Description.Text = _note.Content;
@@ -24,7 +27,8 @@ namespace SafeNotes
 
         private async void Add_Btn_Clicked(object sender, System.EventArgs e)
         {
-            var note = new Note(Title.Text, Description.Text);
+            var userId = (Guid)Application.Current.Properties["id"];
+            var note = new Note(Title.Text, Description.Text, userId);
             await DisplayAlert("Saved!", "Your note has been saved!", "Ok");
             await App.Database.SaveItem(note);
             await Navigation.PopAsync();

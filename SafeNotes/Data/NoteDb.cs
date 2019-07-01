@@ -19,15 +19,15 @@ namespace NotesManagerLib.DataModels
             db.CreateTableAsync<User>().Wait();
         }
 
-        public async Task<List<Note>> GetNotes()
-            => await db.Table<Note>().ToListAsync();
+        public async Task<List<Note>> GetNotes(Guid userId)
+            => await db.Table<Note>().Where(x => x.UserId == userId)
+            .ToListAsync();
 
         public async Task<List<T>> GetAll<T>() where T : class, new ()
             => await db.Table<T>().ToListAsync();
 
         public async Task<T> GetByID<T>(Guid id) where T : BaseEntity, new ()
             => await db.Table<T>().Where(t => t.Id == id).FirstOrDefaultAsync();
-
 
         public async Task<User> GetByLogin(string login)
             => await db.Table<User>().Where(x => x.Login == login).FirstOrDefaultAsync();
@@ -45,9 +45,6 @@ namespace NotesManagerLib.DataModels
 
         public async Task<int> DeleteItem<T>(T item) where T : BaseEntity
             =>  await db.DeleteAsync(item);
-
-        public async Task<int> DeleteAll<T>(List<T> items) where T : BaseEntity
-            => await db.DeleteAsync(items);
 
     }
 }

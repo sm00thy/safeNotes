@@ -7,11 +7,11 @@ namespace SafeNotes.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime DateTime { get { return DateTime.Now; } } 
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
         public Note() { }
 
-        public Note(string title, string content, int userId)
+        public Note(string title, string content, Guid userId)
         {
             Title = title;
             Content = content;
