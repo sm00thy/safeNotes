@@ -1,27 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SafeNotes.DashboardPage"
              x:Name="ContentPage">
-    <ContentPage.Content>
+    <ContentPage.Content>        
          <ListView x:Name="NotesList" ItemsSource="
             {Binding Source={x:Reference ContentPage},
             Path=BindingContext.Notes}" IsVisible="True">  
         <ListView.Header>  
-            <StackLayout Orientation="Horizontal">  
-                <Button Text="Add" Clicked="Add_Btn_Clicked"></Button>  
-                <Button x:Name="Delete" Text="Delete Last" Clicked="Delete_Btn_Clicked"></Button>  
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">  
+                <Button Text="Add Note" Clicked="Add_Btn_Clicked" />  
             </StackLayout>  
         </ListView.Header>  
         <ListView.ItemTemplate>  
             <DataTemplate>  
                 <ViewCell>  
                     <ViewCell.ContextActions>  
-                        <MenuItem Text="Delete Item" Clicked="MenuItem_Delete" CommandParameter="{Binding .}">  
-                        </MenuItem>  
+                        <MenuItem Text="Delete" Clicked="MenuItem_Delete" CommandParameter="{Binding .}" />     
+                        <MenuItem Text="Update" Clicked="MenuItemUpdate_Clicked" CommandParameter="{Binding .}" />
                     </ViewCell.ContextActions>  
                     <StackLayout Orientation="Horizontal">  
-                        <Label Text="{Binding Id}"></Label>  
-                        <Label Text="{Binding Title}"></Label>  
-                        <Label Text="{Binding Content}"></Label>  
+                        <Label Text="{Binding Title}" />  
+                        <Label Text="{Binding Content}"/> 
                     </StackLayout>  
                 </ViewCell>  
             </DataTemplate>  

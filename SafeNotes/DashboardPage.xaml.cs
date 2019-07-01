@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using SafeNotes.Models;
 using Xamarin.Forms;
 
@@ -10,30 +8,37 @@ namespace SafeNotes
     public partial class DashboardPage : ContentPage
     {
         public ObservableCollection<Note> Notes { get; set; }
-
+        
         public DashboardPage()
         {
             InitializeComponent();
-            Notes = new ObservableCollection<Note>();
-            var note = new Note("test", "test");
-            Notes.Add(note);
+        }
+
+        protected async override void OnAppearing()
+        {
+            var source = await App.Database.GetNotes();
+            Notes = new ObservableCollection<Note>(source);
             NotesList.ItemsSource = Notes;
+            base.OnAppearing();
         }
 
-        void Add_Btn_Clicked(object sender, System.EventArgs e)
+        private async void Add_Btn_Clicked(object sender, System.EventArgs e)
         {
-            Notes.Add(new Note("Test", "Testowa"));
+            await Navigation.PushAsync(new NotePage());
         }
 
-        void Delete_Btn_Clicked(object sender, System.EventArgs e)
+        private async void MenuItem_Delete(object sender, System.EventArgs e)
         {
-            Notes.Remove(Notes.LastOrDefault());
-        }
-
-        void MenuItem_Delete(object sender, System.EventArgs e)
-        {
-            var menuItem = sender as MenuItem;
+            var menuItem = (MenuItem)sender;
             Notes.Remove((Note)menuItem.CommandParameter);
+            await App.Database.DeleteItem((Note)menuItem.CommandParameter);
+        }
+
+        private async void MenuItemUpdate_Clicked(object sender, System.EventArgs e)
+        {
+            var menuItem = (MenuItem)sender;
+            var note = (Note)menuItem.CommandParameter;
+            await Navigation.PushAsync(new NotePage(note));
         }
     }
 }
