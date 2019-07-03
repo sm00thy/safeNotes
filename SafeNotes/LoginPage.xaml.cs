@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Net;
+using System.Net.NetworkInformation;
+using Plugin.Connectivity;
 using SafeNotes.Models;
 using Xamarin.Forms;
 
@@ -9,7 +12,11 @@ namespace SafeNotes
         public LoginPage()
         {
             InitializeComponent();
-
+           
+            if (CrossConnectivity.Current.IsConnected)
+                connectionCheck.Text = "Internet connection: OK";
+            else
+                connectionCheck.Text = "Internet connection: NO";
         }
 
         async void Register_Btn_Clicked(object sender, EventArgs e)

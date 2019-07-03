@@ -8,6 +8,7 @@
             <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="true" />
             <Button Text="Submit" x:Name="submitBtn" Clicked="Submit_Btn_Clicked" />
             <Button Text="Register" x:Name="registerBtn" Clicked="Register_Btn_Clicked" />
+            <Label x:Name="connectionCheck" HorizontalOptions="Center" FontSize="Small" />
         </StackLayout> 
     </ContentPage.Content>
 </ContentPage>
